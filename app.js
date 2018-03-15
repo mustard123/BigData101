@@ -53,9 +53,9 @@ app.get('/api/articles/:articleId', (req, res) =>{
 
 app.post('/api/articles', (req, res) => {
     console.log(req.body);
-    if(req.body.length === 0){
+    if(req.body.length === 0 || req.body.article === '') {
         console.log('empty');
-        return res.statusCode(300).send('empty');
+        return res.status(400).send('empty');
     }
     else {
         let article = req.body;
