@@ -10,4 +10,4 @@ Run
 ```
 
 
-Then go to localhost:3000
+Then open browser on  localhost:3000
