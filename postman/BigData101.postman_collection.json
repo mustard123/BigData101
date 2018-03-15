@@ -1,0 +1,125 @@
+{
+	"id": "d420283b-2db7-476a-beb3-feebcd30c8fd",
+	"name": "BigData101",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"d301029f-0038-429f-a569-b85ec2b099be",
+		"268b5768-6938-42cb-b25d-1638aca1e657",
+		"4f8f0537-e4e8-4521-bd7a-4d7599e60742",
+		"915c98c4-0787-43c8-86ad-8ad261426b0b",
+		"5e72a733-bc4a-46f1-b137-671fa3e9ab15"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "268b5768-6938-42cb-b25d-1638aca1e657",
+			"name": "Post article",
+			"url": "localhost:3000/api/articles",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\"category\": \"law\",\n\"article\": \"bblbas\",\n\"author\": \"silas\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "4f8f0537-e4e8-4521-bd7a-4d7599e60742",
+			"name": "Get single article",
+			"url": "localhost:3000/api/articles/5aaa1fe0bd3cfb04a0069b1a",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "5e72a733-bc4a-46f1-b137-671fa3e9ab15",
+			"name": "Delete article",
+			"url": "localhost:3000/api/articles/5aaa1ff3bd3cfb04a0069b1b",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\"category\": \"law\",\n\"article\": \"aaaaaaaaaaaaaaaaaaaaaaaaaa\",\n\"author\": \"silas\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "915c98c4-0787-43c8-86ad-8ad261426b0b",
+			"name": "Update article",
+			"url": "localhost:3000/api/articles/5aaa1fe0bd3cfb04a0069b1a",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\"category\": \"law\",\n\"article\": \"aaaaaaaaaaaaaaaaaaaaaaaaaa\",\n\"author\": \"silas\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d301029f-0038-429f-a569-b85ec2b099be",
+			"name": "Get articles",
+			"url": "localhost:3000/api/articles",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
