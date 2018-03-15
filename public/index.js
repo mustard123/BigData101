@@ -23,8 +23,11 @@ $(function(){
             dataType: 'json',
             contentType: 'application/json',
             success: function(result) {
-                console.log(result)
-                window.location.reload(true)
+                $('#PostSuccess').toggleClass('hidden');
+                setTimeout(function () {
+                    window.location.reload(true);
+                }, 1000)
+
             }
         });
 
