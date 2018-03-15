@@ -1,9 +1,13 @@
-#REQUIREMENTS
-NodeJs
-MongoDB
+# REQUIREMENTS
+* NodeJs
+* MongoDB
 
-#Installation
->npm install
->node app.js
+#Installation & Running
+Run
+```shell
+> npm install
+> node app.js
+```
 
-Go to localhost:3000
+
+Then go to localhost:3000
