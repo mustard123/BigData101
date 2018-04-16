@@ -4,6 +4,7 @@ $(function(){
     let articleInput = $('#ArticleInput');
     let authorInput =$('#AuthorInput');
     let submitButton = $('#submitButton');
+    let pwdInput = $('#pwd');
     submitButton.click(function (e) {
         e.preventDefault();
         console.log("clicked")
@@ -13,6 +14,7 @@ $(function(){
         requestObject.category = categoryInput.val();
         requestObject.article = articleInput.val();
         requestObject.auth = authorInput.val();
+        requestObject.pwd = pwdInput.val();
 
         let request= JSON.stringify(requestObject);
         console.log(request);
@@ -24,6 +26,12 @@ $(function(){
             contentType: 'application/json',
             success: function(result) {
                 $('#PostSuccess').toggleClass('hidden');
+                setTimeout(function () {
+                    window.location.reload(true);
+                }, 1000)
+            },
+            error: function (result) {
+                $('#BadRequest').toggleClass('hidden');
                 setTimeout(function () {
                     window.location.reload(true);
                 }, 1000)

@@ -51,6 +51,14 @@ app.get('/api/articles/:articleId', (req, res) =>{
     })
 });
 
+app.post('/api/articles', (req, res, next)=>{
+    if (req.body.pwd !== '123'){
+        return res.status(401).send('wrong password')
+    }
+    else next();
+
+});
+
 app.post('/api/articles', (req, res) => {
     console.log(req.body);
     if(req.body.length === 0 || req.body.article === '') {

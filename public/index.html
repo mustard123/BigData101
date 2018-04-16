@@ -52,10 +52,17 @@
             <label for="AuthorInput">Author</label>
             <input type="text" class="form-control" id="AuthorInput"  placeholder="Your name">
         </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+        </div>
         <button id="submitButton"  class="btn btn-primary">Submit</button>
     </form>
-        <div id="PostSuccess" class="alert alert-success hidden">
+        <div id="PostSuccess" class="alert alert-success hidden flash-alert">
             <strong>Success!</strong> Article posted!
+        </div>
+        <div id="BadRequest" class="alert alert-danger hidden flash-alert">
+            <strong>Fail!</strong> Empty body or wrong password!
         </div>
     </div>
 

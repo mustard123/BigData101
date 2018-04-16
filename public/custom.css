@@ -32,6 +32,6 @@ body {
     display: block;
 }
 
-#PostSuccess {
+.flash-alert {
     margin-top: 20px;
 }
