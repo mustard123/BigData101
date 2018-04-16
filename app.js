@@ -31,6 +31,14 @@ app.use(express.static('public'));
 app.use(bodyparser.json());
 app.use(requestTime);
 
+function checkAuthorization(req, res, next) {
+    if (req.get('Authorization') === 'mDaRAHngPI25LAUhCH0NxjWZeFh7g891') {
+        next();    }
+    else {
+        res.status(401).send('Not authorized');
+    }
+}
+
 app.get('/api/articles', (req, res) =>{
     db.collection('articles').find({}).toArray((err, result)=>{
         if (err){
@@ -71,16 +79,17 @@ app.post('/api/articles', (req, res, next)=>{
 
 app.post('/api/articles', (req, res) => {
     console.log(req.body);
-    if(req.body.length === 0 || req.body.article === '') {
+    let articleObject = req.body.articleObject;
+    if(articleObject.length === 0 || articleObject.article === '') {
         console.log('empty');
         return res.status(400).send('empty');
     }
     else {
-        let article = req.body;
+        let article = articleObject;
         article.requestTime = req.requestTime;
         db.collection('articles').insertOne(article, (err, insertedObject) =>{
             if (err){
-                console.log('Error inserting into database')
+                console.log('Error inserting into database');
                 res.sendStatus(500);
             }
             else {
@@ -90,6 +99,7 @@ app.post('/api/articles', (req, res) => {
     }
 });
 
+app.put('/api/articles/:articleId', checkAuthorization);
 app.put('/api/articles/:articleId', (req, res)=> {
     let articleId = req.params.articleId;
     db.collection('articles').findOneAndUpdate({"_id": mongo.ObjectId(articleId)}, {"$set":{"article":req.body.article, "updatedOn":req.requestTime}}, (err ,result)=> {
@@ -104,6 +114,7 @@ app.put('/api/articles/:articleId', (req, res)=> {
     })
 });
 
+app.delete('/api/articles/:articleId', checkAuthorization);
 app.delete('/api/articles/:articleId', (req, res) => {
     let articleId = req.params.articleId;
     db.collection('articles').deleteOne({"_id": mongo.ObjectId(articleId)}, function (err, result) {

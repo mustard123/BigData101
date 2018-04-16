@@ -7,13 +7,14 @@ $(function(){
     let pwdInput = $('#pwd');
     submitButton.click(function (e) {
         e.preventDefault();
-        console.log("clicked")
+        console.log("clicked");
 
         let requestObject = {};
+        requestObject.articleObject = {};
 
-        requestObject.category = categoryInput.val();
-        requestObject.article = articleInput.val();
-        requestObject.auth = authorInput.val();
+        requestObject.articleObject.category = categoryInput.val();
+        requestObject.articleObject.article = articleInput.val();
+        requestObject.articleObject.author = authorInput.val();
         requestObject.pwd = pwdInput.val();
 
         let request= JSON.stringify(requestObject);
