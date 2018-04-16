@@ -6,8 +6,18 @@ let bodyparser = require('body-parser');
 let requestTime = require('./middleware/request-time');
 let db;
 let dbName = 'bigdata101';
+let port = process.env.PORT || 3000;
+let mongoConnectionString;
 
-MongoClient.connect('mongodb://localhost:27017', function (err, client) {
+if (process.env.LOCAL === 'true'){
+    mongoConnectionString= 'mongodb://localhost:27017';
+    console.log('Trying to use local database');
+}
+else {
+    mongoConnectionString = 'mongodb://bduser:bduser101@ds151355.mlab.com:51355/bigdata101'
+}
+
+MongoClient.connect(mongoConnectionString, function (err, client) {
     if(err){
         throw err
     }
@@ -107,7 +117,24 @@ app.delete('/api/articles/:articleId', (req, res) => {
     });
 });
 
+app.get('/api/dropdatabase', (req,res)=>{
+    if (req.get('Authorization')==='s3bWhKajA5javJCLmT3NFK7GlIw8oGr8'){
+        db.dropDatabase(function (err,result) {
+            if(err){
+                console.log('Error dropping database');
+                res.status(500).send('Error dropping database');
+            }
+            else {
+                console.log('Database dropped');
+                res.status(200).send('Database dropped');
+            }
+        });
+    }
+    else {
+        res.status(401).send('Not authorized');
+    }
+});
 
-app.listen(3000, function () {
-    console.log("Server listening on port 3000!");
+app.listen(port, function () {
+    console.log("Server listening on port", port);
 });
