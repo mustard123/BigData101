@@ -49,6 +49,10 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="ArticleTitle">Title</label>
+            <input type="text" class="form-control" id="ArticleTitle">
+        </div>
+        <div class="form-group">
             <label for="ArticleInput">Article</label>
             <textarea type="text" class="form-control" id="ArticleInput" placeholder="" rows="5"></textarea>
         </div>
@@ -66,7 +70,7 @@
             <strong>Success!</strong> Article posted!
         </div>
         <div id="BadRequest" class="alert alert-danger hidden flash-alert">
-            <strong>Fail!</strong> Empty body or wrong password!
+            <strong>Fail!</strong> Empty body or title or wrong password!
         </div>
     </div>
 

@@ -51,6 +51,31 @@ app.get('/api/articles', (req, res) =>{
     })
 });
 
+app.get('/api/articles/:category', (req, res) =>{
+    let category = req.params.category;
+    db.collection('articles').find({"category":category}).toArray((err, result)=>{
+        if (err){
+            console.log('There was an error fetching from the database');
+            res.sendStatus(500);
+        }
+        else {
+            res.send(result);
+        }
+    })
+});
+
+app.get('/api/articleTitles', (req, res) =>{
+    db.collection('articles').find({}).project({_id:1, title:1}).toArray((err, result)=>{
+        if (err){
+            console.log('There was an error fetching from the database');
+            res.sendStatus(500);
+        }
+        else {
+            res.send(result);
+        }
+    })
+});
+
 app.get('/hi', (req,res) => {
     console.log(req.requestTime);
     res.send(req.requestTime.toString());
@@ -80,7 +105,7 @@ app.post('/api/articles', (req, res, next)=>{
 app.post('/api/articles', (req, res) => {
     console.log(req.body);
     let articleObject = req.body.articleObject;
-    if(articleObject.length === 0 || articleObject.article === '') {
+    if(articleObject.length === 0 || articleObject.article === '' || articleObject.title === '') {
         console.log('empty');
         return res.status(400).send('empty');
     }

@@ -1,6 +1,7 @@
 $(function(){
 
     let categoryInput = $('#CategoryInput');
+    let titleInput = $('#ArticleTitle')
     let articleInput = $('#ArticleInput');
     let authorInput =$('#AuthorInput');
     let submitButton = $('#submitButton');
@@ -14,6 +15,7 @@ $(function(){
 
         requestObject.articleObject.category = categoryInput.val();
         requestObject.articleObject.article = articleInput.val();
+        requestObject.articleObject.title = titleInput.val();
         requestObject.articleObject.author = authorInput.val();
         requestObject.pwd = pwdInput.val();
 
